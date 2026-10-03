@@ -1,1 +1,714 @@
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bhagat Sabari Nath | Profile</title>
+    <style>
+      :root {
+        --bg: #f4f7fb;
+        --panel: #ffffff;
+        --primary: #123a63;
+        --primary-soft: #dfeaf8;
+        --accent: #2f80ed;
+        --text: #1d2a36;
+        --muted: #5d6b7c;
+        --line: #e7edf5;
+        --success: #217a5d;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #eef4ff, #f7f9fc 45%, #eef6f4);
+        color: var(--text);
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 36px auto;
+        padding: 0 20px 40px;
+      }
+
+      .card {
+        background: rgba(255,255,255,0.96);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: 0 18px 45px rgba(23, 48, 85, 0.08);
+      }
+
+      .hero {
+        padding: 32px 36px 18px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        background: var(--primary-soft);
+        color: var(--primary);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 0.9fr;
+        gap: 24px;
+        align-items: center;
+        margin-top: 12px;
+      }
+
+      .hero-main {
+        display: grid;
+        grid-template-columns: 116px minmax(0, 1fr);
+        align-items: center;
+        gap: 22px;
+        min-width: 0;
+      }
+
+      .portrait {
+        display: block;
+        width: 116px;
+        height: 232px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #f7fafb;
+        object-fit: contain;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(2.3rem, 5vw, 4rem);
+        line-height: 1.07;
+        letter-spacing: -0.06em;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 1.02rem;
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .hero-copy {
+        display: grid;
+        gap: 14px;
+      }
+
+      .contact-box {
+        background: linear-gradient(135deg, #123a63, #1f5aa7);
+        color: white;
+        border-radius: 18px;
+        padding: 24px 22px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .contact-box h3 {
+        margin: 0;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 8px;
+        font-size: 0.96rem;
+      }
+
+      .contact-list a {
+        color: white;
+        text-decoration: none;
+        opacity: 0.95;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 1.05fr 1.2fr;
+        gap: 24px;
+        margin-top: 24px;
+      }
+
+      .tab-bar {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+        width: min(100%, 460px);
+        margin: 24px auto 0;
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+
+      .tab-button {
+        min-height: 44px;
+        padding: 9px 12px;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--muted);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .tab-button[aria-selected="true"] {
+        background: var(--primary);
+        color: white;
+      }
+
+      .tab-button:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      .tab-content {
+        margin-top: 18px;
+      }
+
+      .tab-panel[hidden] {
+        display: none;
+      }
+
+      .tab-panel > .content {
+        margin-top: 0;
+      }
+
+      .content.single-column {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 760px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .column {
+        display: grid;
+        gap: 24px;
+      }
+
+      .section {
+        padding: 26px 28px;
+      }
+
+      .section h2 {
+        margin: 0 0 18px;
+        font-size: 1.16rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--primary);
+      }
+
+      .teaser-link {
+        margin-top: 14px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--primary);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .teaser-link:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .teaser-link:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .objective {
+        font-size: 1rem;
+      }
+
+      .award-figure {
+        width: min(100%, 320px);
+        margin: 22px 0 0;
+      }
+
+      .award-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .award-figure figcaption {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.86rem;
+        line-height: 1.5;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .tag {
+        background: var(--primary-soft);
+        color: var(--primary);
+        border-radius: 999px;
+        padding: 7px 10px;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill {
+        border: 1px solid var(--line);
+        background: #f9fbff;
+        border-radius: 12px;
+        padding: 9px 12px;
+        font-size: 0.92rem;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .edu {
+        display: grid;
+        gap: 14px;
+      }
+
+      .edu-item, .exp-item, .project-item, .achievement-item {
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fbfcff;
+      }
+
+      .edu-item strong, .exp-item strong, .project-item strong, .achievement-item strong {
+        color: var(--text);
+      }
+
+      .role {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+
+      .location, .hours {
+        color: var(--muted);
+        font-size: 0.83rem;
+        font-weight: 600;
+      }
+
+      ul {
+        margin: 10px 0 0 18px;
+        padding: 0;
+        color: var(--muted);
+      }
+
+      li + li {
+        margin-top: 7px;
+      }
+
+      .project-item h4, .exp-item h4, .edu-item h4, .achievement-item h4 {
+        margin: 0 0 4px;
+        font-size: 1rem;
+      }
+
+      .certs {
+        display: grid;
+        gap: 12px;
+      }
+
+      .cert {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #f7fafb;
+        border: 1px solid var(--line);
+      }
+
+      .cert strong {
+        color: var(--text);
+      }
+
+      .status {
+        color: var(--success);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 820px) {
+        .hero-grid, .content {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-main {
+          grid-template-columns: 96px minmax(0, 1fr);
+          gap: 16px;
+        }
+
+        .portrait {
+          width: 96px;
+          height: 192px;
+        }
+
+        .page {
+          margin: 18px auto;
+        }
+
+        .hero, .section {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="card hero">
+        <div class="topbar">
+          <span class="badge">STEM Enthusiast</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-main">
+            <img class="portrait" src="bhagat.jpg" alt="Portrait of Bhagat Sabari Nath" width="1536" height="3072" />
+            <div class="hero-copy">
+              <div>
+                <h1>Bhagat Sabari Nath</h1>
+                <p class="subtitle">Student Leader • Innovator • Volunteer • Chess Enthusiast</p>
+              </div>
+
+              <p>
+                Grade 12 student at Northern Secondary School interested in engineering and technology.
+                I build hands-on skills through robotics, CAD, programming, and the CanSat
+                Design Challenge, and have contributed more than 400 hours to youth programs, chess events,
+                and Toronto community events.
+              </p>
+
+              <div class="meta">
+                <span class="tag">Ontario Secondary School Diploma Candidate</span>
+                <span class="tag">SHSM Student</span>
+                <span class="tag">400+ Volunteer Hours</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="contact-box">
+            <h3>Contact</h3>
+            <div class="contact-list">
+              <span><a href="mailto:bhagat.s.nath@gmail.com">bhagat.s.nath@gmail.com</a></span>
+              <span><a href="https://github.com/bhagatsnath" target="_blank" rel="noreferrer">github.com/bhagatsnath</a></span>
+              <span><a href="https://www.linkedin.com/in/bhagat-sabari-nath-b285833a4/" target="_blank" rel="noreferrer">linkedin.com/in/bhagat-sabari-nath</a></span>
+            </div>
+          </aside>
+        </div>
+      </header>
+
+      <nav class="tab-bar" role="tablist" aria-label="Portfolio sections" aria-orientation="horizontal">
+        <button id="profile-tab" class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="profile-panel" tabindex="0">Profile</button>
+        <button id="projects-tab" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="projects-panel" tabindex="-1">Projects</button>
+        <button id="about-tab" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="about-panel" tabindex="-1">About Me</button>
+      </nav>
+
+      <main class="tab-content">
+        <section id="profile-panel" class="tab-panel" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+          <div class="content">
+            <div class="column">
+          <section class="card section">
+            <h2>Education</h2>
+            <div class="edu">
+              <div class="edu-item">
+                <h4>Northern Secondary School</h4>
+                <div class="role">
+                  <strong>Grade 12 Student · Ontario Secondary School Diploma Candidate</strong>
+                  <span class="location">Toronto, Ontario</span>
+                </div>
+                <div class="location">September 2023 – June 2027</div>
+                <ul>
+                  <li>Ongoing SHSM (Specialist High Skills Major) Student</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="card section">
+            <h2>Skills &amp; Abilities</h2>
+            <div class="skills">
+              <span class="skill">Java</span>
+              <span class="skill">Python</span>
+              <span class="skill">HTML</span>
+              <span class="skill">CAD Design</span>
+              <span class="skill">OnShape</span>
+              <span class="skill">Public Speaking</span>
+              <span class="skill">Leadership</span>
+              <span class="skill">Event Management</span>
+              <span class="skill">Time Management</span>
+              <span class="skill">Problem Solving</span>
+              <span class="skill">Team Coordination</span>
+              <span class="skill">Volunteer Supervision</span>
+            </div>
+          </section>
+
+          <section class="card section">
+            <h2>Certifications</h2>
+            <div class="certs">
+              <div class="cert">
+                <strong>Standard First Aid</strong>
+                <span class="status">Certified</span>
+              </div>
+              <div class="cert">
+                <strong>CPR Level C with AED</strong>
+                <span class="status">Certified</span>
+              </div>
+              <div class="cert">
+                <strong>Fire Protection Certification</strong>
+                <span class="status">Certified</span>
+              </div>
+              <div class="cert">
+                <strong>Valid Vulnerable Sector Check</strong>
+                <span class="status">Valid</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="card section">
+            <h2>Projects</h2>
+            <ul>
+              <li><strong>CanSat Design Challenge:</strong> Built a functional satellite with Arduino, lights, and sensors; created CAD models for prototyping.</li>
+              <li><strong>VEX Robotics:</strong> Ongoing competitive work across mechanical design, coding, building, and testing game-based solutions.</li>
+            </ul>
+            <button class="teaser-link" type="button" data-open-tab="projects-tab">Explore Projects</button>
+          </section>
+
+          <section class="card section">
+            <h2>About Me</h2>
+            <p>I enjoy exploring how technology works and how it can be applied to real-world challenges.</p>
+            <button class="teaser-link" type="button" data-open-tab="about-tab">More About Me</button>
+          </section>
+            </div>
+
+            <div class="column">
+          <section class="card section">
+            <h2>Volunteer Experience</h2>
+            <div class="exp-item">
+              <h4>Peer Math Tutoring</h4>
+              <div class="role">
+                <strong>Peer Tutor</strong>
+                <span class="hours">Grade 12 · Ongoing</span>
+              </div>
+              <ul>
+                <li>Help peers pinpoint where math problems become challenging and explain concepts in clear steps</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <h4><a href="https://stemcamp.ca/" target="_blank" rel="noreferrer">STEM Camp</a></h4>
+              <div class="role">
+                <strong>Camp Counselor</strong>
+                <span class="hours">192 hours · 5 weeks</span>
+              </div>
+              <div class="location">Summer 2026</div>
+              <ul>
+                <li>Supported campers as they explored hands-on STEM activities during a five-week, 192-hour summer role</li>
+                <li>Practiced clear communication, teamwork, and dependable day-to-day support as a counselor</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <h4><a href="https://torontochesscentre.com/" target="_blank" rel="noreferrer">Toronto Chess Center</a></h4>
+              <div class="role">
+                <strong>Section Arbiter</strong>
+                <span class="hours">47 hours · 2025–2026</span>
+              </div>
+              <div class="location">Toronto Youth Chess Championship, March CYCC &amp; OCC Qualifier, Youth Grand Prix, Ontario Youth Chess Championship</div>
+              <div class="location">Toronto, Ontario</div>
+              <ul>
+                <li>Applied tournament rules as a Section Arbiter across four chess events</li>
+                <li>Supported fair play and smooth tournament operations</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <h4>Northern Secondary School</h4>
+              <div class="role">
+                <strong>Library Event Support &amp; Tech Section Supervisor</strong>
+                <span class="hours">32 hours</span>
+              </div>
+              <div class="location">Toronto, Ontario</div>
+              <ul>
+                <li>Supervised the library's tech section and helped organize library events</li>
+                <li>Contributed to book inventory and maintaining an organized library space</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <h4>Chess in the Library</h4>
+              <div class="role">
+                <strong>Event Supervisor</strong>
+                <span class="hours">15.5 hours</span>
+              </div>
+              <div class="location">Markham, Ontario</div>
+              <ul>
+                <li>Led chess lessons and organized games for participants</li>
+                <li>Coordinated event setup and cleanup</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <h4>Toronto Community Event Operations</h4>
+              <div class="role">
+                <strong>Event Volunteer &amp; Stall Supervisor</strong>
+                <span class="hours">150+ additional hours across community events</span>
+              </div>
+              <div class="location">Toronto, Ontario</div>
+              <ul>
+                <li>Volunteered at community events including UHN Foundation events, UHN We Walk UHNITED, the Toronto Marathon, TCS Waterfront Marathon, and the Cabbagetown BIA Festival</li>
+                <li>Contributed to event setup, water-station support, stall supervision, logistics, and community outreach</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="card section">
+            <h2>Achievements</h2>
+            <div class="achievement-item">
+              <ul>
+                <li>University of Waterloo Canadian Computing Competition Participation</li>
+                <li>University of Waterloo Gauss Math Contest - Distinction Certificate</li>
+                <li>Ontario Principal’s Council Principal's Award for Student Leadership</li>
+                <li>Scholar’s Award 2023-2024 &amp; 2024-2025</li>
+              </ul>
+            </div>
+          </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects-panel" class="tab-panel" role="tabpanel" aria-labelledby="projects-tab" tabindex="0" hidden>
+          <div class="content single-column">
+            <div class="column">
+              <section class="card section">
+                <h2>Projects</h2>
+                <div class="project-item">
+                  <h4>CanSat Design Challenge</h4>
+                  <div class="role">
+                    <strong>Mechanical, Coding, Design &amp; Launch</strong>
+                  </div>
+                  <ul>
+                    <li>Built a small functional satellite integrated with Arduino, lights, and sensors</li>
+                    <li>Used CAD software to create precise 3D models for manufacturing and prototyping</li>
+                  </ul>
+                </div>
+
+                <div class="project-item">
+                  <h4>VEX Robotics</h4>
+                  <div class="role">
+                    <strong>Mechanical, Coding &amp; Testing</strong>
+                  </div>
+                  <ul>
+                    <li>Ongoing competitive robotics work focused on building and testing game-based solutions</li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="about-panel" class="tab-panel" role="tabpanel" aria-labelledby="about-tab" tabindex="0" hidden>
+          <div class="content single-column">
+            <section class="card section">
+              <h2>About Me</h2>
+              <p class="objective">
+                I am curious about how technology works and how it can be applied to real-world challenges.
+                Through robotics, CAD, and programming, I enjoy exploring ideas by designing, building, and
+                testing. Leading and volunteering in my community have also taught me the value of teamwork,
+                responsibility, and learning from others.
+              </p>
+              <figure class="award-figure">
+                <img src="bhagat_award.jpg" alt="Plaque for the Ontario Principals' Council Principal's Award for Student Leadership, awarded to Bhagat Sabari Nath for 2022-2023." />
+                <figcaption>Ontario Principals&rsquo; Council Principal&rsquo;s Award for Student Leadership, 2022&ndash;2023.</figcaption>
+              </figure>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const tabList = document.querySelector("[role='tablist']");
+      const tabs = Array.from(tabList.querySelectorAll("[role='tab']"));
+      const panels = tabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls")));
+
+      function activateTab(activeTab) {
+        tabs.forEach((tab, index) => {
+          const isActive = tab === activeTab;
+          tab.setAttribute("aria-selected", String(isActive));
+          tab.tabIndex = isActive ? 0 : -1;
+          panels[index].hidden = !isActive;
+        });
+      }
+
+      tabList.addEventListener("click", (event) => {
+        const selectedTab = event.target.closest("[role='tab']");
+        if (selectedTab) activateTab(selectedTab);
+      });
+
+      tabList.addEventListener("keydown", (event) => {
+        const currentIndex = tabs.indexOf(document.activeElement);
+        let nextIndex;
+
+        if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
+        else if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        else if (event.key === "Home") nextIndex = 0;
+        else if (event.key === "End") nextIndex = tabs.length - 1;
+        else return;
+
+        event.preventDefault();
+        tabs[nextIndex].focus();
+        activateTab(tabs[nextIndex]);
+      });
+
+      document.querySelectorAll("[data-open-tab]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const targetTab = document.getElementById(button.dataset.openTab);
+          activateTab(targetTab);
+          targetTab.focus();
+        });
+      });
+    </script>
+  </body>
+</html>
